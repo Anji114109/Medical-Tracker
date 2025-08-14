@@ -1,0 +1,83 @@
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  backdrop-filter: blur(5px);
+  background-color: rgba(0, 0, 0, 0.3);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.modal-content.profile-modal {
+  background: rgba(177, 207, 227, 0.85); /* light blue with transparency */
+  backdrop-filter: blur(8px);
+  padding: 25px 35px;
+  border-radius: 12px;
+  width: 320px;
+  border: 1px solid rgba(0, 0, 0, 0.12); /* darker border for contrast */
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.12);
+}
+
+.modal-content.profile-modal h2 {
+  margin-top: 0;
+  margin-bottom: 20px;
+  color: #333;
+}
+
+/* Capsule style for each detail */
+.capsule-box {
+  background: white;
+  padding: 8px 14px;
+  margin: 6px 0;
+  border-radius: 999px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+  border: 1px solid rgba(0,0,0,0.08);
+  font-weight: 600;
+  color: #444;
+}
+
+.profile-details input,
+.profile-details select {
+  margin-left: 8px;
+  padding: 5px;
+  border: 1px solid #aaa;
+  border-radius: 999px;
+}
+
+/* Buttons container */
+.profile-buttons {
+  margin-top: 20px;
+  display: flex;
+  gap: 10px;
+  justify-content: flex-end;
+}
+
+/* White capsule buttons with light blue active state */
+.btn-white {
+  padding: 8px 16px;
+  font-weight: 500;
+  border-radius: 999px;
+  cursor: pointer;
+  border: none;
+  background-color: white;
+  color: #333;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+  transition: background-color 0.25s ease,
+              color 0.25s ease,
+              transform 0.25s ease;
+}
+
+.btn-white:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.12);
+}
+
+/* Only change color while pressed */
+.btn-white:active {
+  background-color: #add8e6;
+  color: #003366;
+}

@@ -1,0 +1,107 @@
+.homepage-container {
+  height: 100vh;
+  width: 100vw;
+  background-image: url("../assets/bg.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  display: flex;
+  justify-content: center; /* Center horizontally */
+  align-items: center;
+  animation: fadeInBackground 1.2s ease-in-out forwards;
+  opacity: 0;
+}
+
+.button-container {
+  background: rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(8px);
+  padding: 40px; /* Increased from 30px */
+  border-radius: 12px;
+  display: flex;
+  flex-direction: column;
+  width: 300px; /* Increased from 250px */
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+  animation: fadeInUp 1.5s ease forwards;
+  opacity: 0;
+  border: 2px solid transparent;
+  transition: all 0.4s ease;
+  margin-left: 750px; /* Push slightly right of center */
+}
+
+.button-container:hover {
+  border-color: transparent;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+}
+
+.signup-button:hover,
+.login-button:hover {
+  box-shadow: none;
+  border: none;
+}
+
+.homepage-button {
+  padding: 14px 28px; /* Increased size */
+  font-size: 18px;
+  font-weight: bold;
+  border: none;
+  border-radius: 50px; /* Capsule effect */
+  cursor: pointer;
+  transition: all 0.25s ease;
+  transform: scale(1);
+}
+
+.homepage-button:hover {
+  transform: scale(1.05);
+}
+
+.signup-button {
+  background-color: #f48d8d;
+}
+
+.signup-button:active {
+  background-color: #ee7d7d;
+  transform: scale(0.98);
+}
+
+.login-button {
+  background-color: #cce5ff;
+}
+
+.login-button:active {
+  background-color: #99ccff;
+  transform: scale(0.98);
+}
+
+.info-text {
+  font-size: 14px;
+  margin-top: 8px;
+  color: #333;
+  font-weight: bold;
+}
+
+.spacer {
+  height: 30px;
+}
+
+/* Animations */
+@keyframes fadeInBackground {
+  from {
+    opacity: 0;
+    transform: scale(1.02);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

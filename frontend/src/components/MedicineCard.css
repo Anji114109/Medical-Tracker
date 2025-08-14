@@ -1,0 +1,83 @@
+/* Slide-in + fade animation */
+@keyframes slideFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(15px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Card container */
+.medicine-card {
+  background: rgba(177, 207, 227, 0.8); /* light blue with transparency */
+  backdrop-filter: blur(8px);
+  border-radius: 16px;
+  padding: 18px;
+  width: 260px;
+  min-height: 260px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  border: 1px solid rgba(0, 0, 0, 0.12); /* darker for contrast */
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  animation: slideFadeIn 0.4s ease both;
+  transition: box-shadow 0.3s ease, border-color 0.3s ease;
+}
+
+.medicine-card:hover {
+  border-color: rgba(0, 0, 0, 0.18);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.15);
+}
+
+/* Capsule style for text */
+.capsule-box {
+  background: white;
+  padding: 8px 14px;
+  margin: 6px 0;
+  border-radius: 999px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+  border: 1px solid rgba(0,0,0,0.08);
+  font-size: 0.95rem;
+  color: #333;
+}
+
+/* Buttons container */
+.medicine-actions {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 15px;
+}
+
+/* Capsule buttons - default white */
+.medicine-actions button {
+  flex: 1;
+  margin: 0 4px;
+  padding: 8px 18px;
+  border: none;
+  cursor: pointer;
+  font-size: 0.9rem;
+  font-weight: 500;
+  border-radius: 999px; /* perfect capsule shape */
+  background-color: white; /* default */
+  color: #333;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+  transition: background-color 0.25s ease, 
+              color 0.25s ease, 
+              transform 0.25s ease, 
+              box-shadow 0.25s ease;
+}
+
+/* Hover lift */
+.medicine-actions button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.12);
+}
+
+/* Press effect: all buttons same color while pressed */
+.medicine-actions button:active {
+  background-color: #7ebaff;
+  color: #003366;
+}

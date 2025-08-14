@@ -1,0 +1,110 @@
+.register-container {
+  height: 100vh;
+  width: 100vw;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.register-form {
+  background: rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(8px);
+  padding: 30px;
+  border-radius: 12px;
+  display: flex;
+  flex-direction: column;
+  width: 320px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+  animation: fadeInUp 1.5s ease forwards;
+  opacity: 0;
+  border: 2px solid transparent;
+  transition: all 0.4s ease;
+}
+
+/* Default glow on hover */
+.register-form:hover {
+  border-color: rgba(255, 255, 255, 0.6);
+  box-shadow: 0 4px 25px rgba(255, 255, 255, 0.4);
+}
+
+/* Light blue glow when any input is focused */
+.register-form:focus-within {
+  border-color: rgba(100, 160, 255, 0.7);
+  box-shadow: 0 4px 25px rgba(100, 160, 255, 0.6);
+}
+
+.register-title {
+  text-align: center;
+  margin-bottom: 20px;
+  font-weight: 700;
+  font-size: 28px;
+  color: #333;
+}
+
+/* Capsule-shaped input and select fields */
+.register-form input,
+.register-form select {
+  margin-bottom: 15px;
+  padding: 10px 15px;
+  font-size: 1rem;
+  border: 1px solid #aaa;
+  border-radius: 999px; /* capsule shape */
+  outline: none;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.register-form input:focus,
+.register-form select:focus {
+  border-color: rgba(100, 160, 255, 0.8);
+  box-shadow: 0 0 8px rgba(100, 160, 255, 0.4);
+}
+
+.password-wrapper {
+  position: relative;
+}
+
+.eye-icon {
+  position: absolute;
+  right: 15px;
+  top: 50%;
+  transform: translateY(-50%);
+  cursor: pointer;
+  font-size: 18px;
+}
+
+.error-msg {
+  color: red;
+  margin-bottom: 10px;
+  font-weight: bold;
+}
+
+/* Capsule-shaped register button with soft glow */
+.btn-register {
+  padding: 12px;
+  background-color: #add8e6;
+  border: none;
+  font-weight: bold;
+  cursor: pointer;
+  border-radius: 999px; /* capsule shape */
+  transition: all 0.3s ease;
+}
+
+.btn-register:hover {
+  background-color: #80b8dc;
+  box-shadow: 0 4px 12px rgba(128, 184, 220, 0.6); /* soft glow */
+}
+
+/* Animation */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
