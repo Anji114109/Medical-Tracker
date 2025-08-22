@@ -1,4 +1,4 @@
-const User = require("C://Users//ambat//OneDrive//Documents//projects//medicineRemainder//mernproject//backend//models//User");
+const User = require("../models/User");
 
 // Register user
 exports.register = async (req, res) => {

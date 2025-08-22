@@ -1,5 +1,4 @@
-const Medicine = require("C://Users//ambat//OneDrive//Documents//projects//medicineRemainder//mernproject//backend//models//Medicine");
-
+const Medicine = require("../models/Medicine");
 // Add medicine
 exports.addMedicine = async (req, res) => {
   try {
