@@ -30,13 +30,15 @@ app.use('/api/medicines', medicineRoutes);
 app.use('/api/history', historyRoutes); // ✅ ADD THIS
 
 // Serve frontend
+// Serve frontend (React build)
 if (process.env.NODE_ENV === 'production') {
-  app.use(express.static(path.join(__dirname, 'frontend/build')));
+  app.use(express.static(path.join(__dirname, '../frontend/build')));
 
   app.get('*', (req, res) => {
-    res.sendFile(path.resolve(__dirname, 'frontend', 'build', 'index.html'));
+    res.sendFile(path.resolve(__dirname, '../frontend', 'build', 'index.html'));
   });
 }
+
 
 // Start server
 const PORT = process.env.PORT || 5000;
