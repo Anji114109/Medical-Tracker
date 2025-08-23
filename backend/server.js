@@ -13,21 +13,8 @@ const historyRoutes = require('./routes/history');
 
 const app = express();
 
-// ----- CORS -----
-const allowedOrigins = [
-  "https://medical-tracker-ver11.vercel.app", // frontend deployed
-  "http://localhost:3000"                     // local dev
-];
-
-app.use(cors({
-  origin: (origin, callback) => {
-    if (!origin) return callback(null, true); // allow tools like Postman
-    if (allowedOrigins.includes(origin)) return callback(null, true);
-    return callback(new Error(`CORS blocked: ${origin} not allowed`));
-  },
-  methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
-  credentials: true,
-}));
+// ----- CORS (allow all for now) -----
+app.use(cors());
 
 // ----- Middleware -----
 app.use(express.json());
@@ -54,9 +41,6 @@ if (process.env.NODE_ENV === 'production') {
     res.sendFile(path.join(frontendBuildPath, 'index.html'));
   });
 }
-
-// ----- Handle preflight requests -----
-app.options('*', cors());
 
 // ----- Start server -----
 const PORT = process.env.PORT || 5000;
