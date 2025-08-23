@@ -14,6 +14,8 @@ const LoginPage = () => {
   const [error, setError] = useState("");
   const [showPassword, setShowPassword] = useState(false);
 
+  const API_URL = process.env.REACT_APP_API_URL; // ✅ use env variable
+
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
@@ -23,7 +25,7 @@ const LoginPage = () => {
     setError("");
 
     try {
-      const res = await fetch("http://localhost:5000/api/users/login", {
+      const res = await fetch(`${API_URL}/auth/login`, { // ✅ use env var & correct route
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(formData),
@@ -32,7 +34,7 @@ const LoginPage = () => {
       const data = await res.json();
 
       if (!res.ok) {
-        setError(data.message);
+        setError(data.message || "Login failed");
       } else {
         sessionStorage.setItem("user", JSON.stringify(data.user));
         navigate("/dashboard");

@@ -15,18 +15,18 @@ const Dashboard = () => {
   const [showHistory, setShowHistory] = useState(false);
   const [selectedMedicine, setSelectedMedicine] = useState(null);
 
-  // Wrapped fetchMedicines in useCallback so we can safely use it in useEffect
+  const API_URL = process.env.REACT_APP_API_URL; // ✅ backend URL
+
+  // Fetch medicines for the user
   const fetchMedicines = useCallback(async () => {
     try {
-      const res = await fetch(
-        `http://localhost:5000/api/medicines/${userData.email}`
-      );
+      const res = await fetch(`${API_URL}/medicines/${userData.email}`);
       const data = await res.json();
       setMedicines(data);
     } catch (err) {
-      alert("Error fetching medicines");
+      alert("Error fetching medicines: " + err.message);
     }
-  }, [userData.email]);
+  }, [API_URL, userData.email]);
 
   useEffect(() => {
     if (!userData) {
@@ -49,12 +49,13 @@ const Dashboard = () => {
   const deleteMedicine = async (id) => {
     if (window.confirm("Are you sure to delete this medicine?")) {
       try {
-        await fetch(`http://localhost:5000/api/medicines/${id}`, {
+        const res = await fetch(`${API_URL}/medicines/${id}`, {
           method: "DELETE",
         });
+        if (!res.ok) throw new Error("Failed to delete medicine");
         fetchMedicines();
       } catch (err) {
-        alert("Failed to delete medicine");
+        alert("Failed to delete medicine: " + err.message);
       }
     }
   };
@@ -69,7 +70,7 @@ const Dashboard = () => {
         taken: true,
       };
 
-      const res = await fetch("http://localhost:5000/api/history/add", {
+      const res = await fetch(`${API_URL}/history/add`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(payload),

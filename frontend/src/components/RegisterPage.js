@@ -20,6 +20,8 @@ const RegisterPage = () => {
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
 
+  const API_URL = process.env.REACT_APP_API_URL; // ✅ backend URL from env
+
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData((prev) => ({
@@ -51,7 +53,7 @@ const RegisterPage = () => {
     }
 
     try {
-      const response = await fetch("http://localhost:5000/api/users/register", {
+      const response = await fetch(`${API_URL}/auth/register`, { // ✅ use env var
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
@@ -63,6 +65,7 @@ const RegisterPage = () => {
           password: formData.password,
         }),
       });
+
       const data = await response.json();
 
       if (!response.ok) {

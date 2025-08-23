@@ -16,6 +16,8 @@ const AddMedicineModal = ({ user, medicine, onClose }) => {
 
   const [everyday, setEveryday] = useState(false);
 
+  const API_URL = process.env.REACT_APP_API_URL; // ✅ backend URL
+
   useEffect(() => {
     if (medicine) {
       setFormData({
@@ -73,11 +75,11 @@ const AddMedicineModal = ({ user, medicine, onClose }) => {
     };
 
     try {
-      let url = "http://localhost:5000/api/medicines/add";
+      let url = `${API_URL}/medicines/add`; // ✅ use env variable
       let method = "POST";
 
       if (medicine) {
-        url = `http://localhost:5000/api/medicines/${medicine._id}`;
+        url = `${API_URL}/medicines/${medicine._id}`; // ✅ use env variable
         method = "PUT";
       }
 

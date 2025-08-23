@@ -1,4 +1,4 @@
-const BASE_URL = "http://localhost:5000/api";
+const BASE_URL = process.env.REACT_APP_API_URL; // ✅ use environment variable
 
 export async function registerUser(userData) {
   const res = await fetch(`${BASE_URL}/users/register`, {
@@ -24,7 +24,7 @@ export async function fetchMedicines(userId) {
 }
 
 export async function addMedicine(medicineData) {
-  const res = await fetch(`${BASE_URL}/medicines`, {
+  const res = await fetch(`${BASE_URL}/medicines/add`, {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify(medicineData),
@@ -49,7 +49,7 @@ export async function deleteMedicine(id) {
 }
 
 export async function addHistory(historyData) {
-  const res = await fetch(`${BASE_URL}/history`, {
+  const res = await fetch(`${BASE_URL}/history/add`, {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify(historyData),

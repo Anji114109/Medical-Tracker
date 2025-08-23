@@ -5,22 +5,25 @@ const HistoryModal = ({ user, onClose }) => {
   const [history, setHistory] = useState([]);
   const [filter, setFilter] = useState("7");
 
-  const fetchHistory = useCallback(async (days) => {
-    try {
-      const res = await fetch(
-        `http://localhost:5000/api/history/${encodeURIComponent(
-          user.email
-        )}?days=${days}`
-      );
-      const data = await res.json();
-      if (!res.ok) {
-        throw new Error(data.message || "Failed to fetch");
+  const API_URL = process.env.REACT_APP_API_URL; // ✅ backend URL
+
+  const fetchHistory = useCallback(
+    async (days) => {
+      try {
+        const res = await fetch(
+          `${API_URL}/history/${encodeURIComponent(user.email)}?days=${days}`
+        );
+        const data = await res.json();
+        if (!res.ok) {
+          throw new Error(data.message || "Failed to fetch history");
+        }
+        setHistory(data);
+      } catch (err) {
+        alert("Failed to load history: " + err.message);
       }
-      setHistory(data);
-    } catch (err) {
-      alert("Failed to load history: " + err.message);
-    }
-  }, [user.email]);
+    },
+    [API_URL, user.email]
+  );
 
   useEffect(() => {
     fetchHistory(filter);
