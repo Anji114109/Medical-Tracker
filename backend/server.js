@@ -40,10 +40,10 @@ mongoose.connect(process.env.MONGO_URI, {
 .then(() => console.log('MongoDB connected'))
 .catch(err => console.error('MongoDB connection error:', err));
 
-// ----- Routes -----
-app.use('/api/auth', userRoutes);
-app.use('/api/medicines', medicineRoutes);
-app.use('/api/history', historyRoutes);
+// ----- Routes (no /api prefix) -----
+app.use('/auth', userRoutes);
+app.use('/medicines', medicineRoutes);
+app.use('/history', historyRoutes);
 
 // ----- Serve React build in production -----
 if (process.env.NODE_ENV === 'production') {
